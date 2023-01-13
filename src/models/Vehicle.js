@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const vehicleSchema = new mongoose.Schema(
   {
     id: {type: String},
+    isDeleted: {type: Boolean, defaults: false},
     vehicleType: {type: String, required: true},
     brandName: {type: String, required: true},
     modelName: {type: String, required: true},
