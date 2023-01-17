@@ -64,16 +64,17 @@ class VehicleController {
     })
   }
 
-  // static deleteVehicles = (req, res) => {
-  //   const {id} = req.params
-  //   vehicles.findByIdAndDelete(id, (err) => {
-  //     if (!err) {
-  //       res.status(200).send({message: 'Vehicle deleted successfully'})
-  //     } else {
-  //       res.status(500).send({message: `ID not found - ${err.message}`})
-  //     } 
-  //   })
-  // }
+  static listVehiclesByType = (req, res) => {
+    const type = req.query.type
+    vehicles.find({'vehicleType': type }, {}, (err, vehicles) => {
+      if(!err) {
+        res.status(200).send(vehicles)
+      } else {
+        res.status(500).send({message: `Error: Brand not found - ${err.message}`})
+      }
+    })
+
+  }
 
 }
 
