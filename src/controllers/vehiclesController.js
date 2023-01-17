@@ -6,6 +6,7 @@ class VehicleController {
     vehicles.find()
       .where({ isDeleted: false })
       .select({ isDeleted: 0 })
+      .populate('brandName', 'brandName')
       .exec((err, vehicles) => {
         if(!err) {
           res.status(200).json(vehicles)  
@@ -57,7 +58,7 @@ class VehicleController {
       if (!err) {
         res.status(200).send({message: `Vehicle deleted successfully`})
       } else {
-        res.status(500).send({message: err.message})
+        res.status(500).send({message: `ID not found - ${err.message}`})
       }
     })
   }

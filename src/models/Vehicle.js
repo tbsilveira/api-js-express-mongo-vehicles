@@ -5,7 +5,7 @@ const vehicleSchema = new mongoose.Schema(
     id: {type: String},
     isDeleted: {type: Boolean, defaults: false},
     vehicleType: {type: String, required: true},
-    brandName: {type: String, required: true},
+    brandName: {type: mongoose.Schema.Types.ObjectId, ref: 'brands', required: true},
     modelName: {type: String, required: true},
     modelYear: {type: Number, required: true},
     overallCondition: {type: String, required: true},
