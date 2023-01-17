@@ -6,7 +6,7 @@ class VehicleController {
     vehicles.find()
       .where({ isDeleted: false })
       .select({ isDeleted: 0 })
-      .populate('brandName', 'brandName')
+      .populate('brandName', ['brandName', 'originCountry'])
       .exec((err, vehicles) => {
         if(!err) {
           res.status(200).json(vehicles)  
@@ -21,6 +21,7 @@ class VehicleController {
     vehicles.findById(id)
       .where({ isDeleted: false })
       .select({ isDeleted: 0 })
+      .populate('brandName', ['brandName', 'originCountry'])
       .exec((err, vehicles) => {
         if (!err) {
           res.status(200).send(vehicles)
